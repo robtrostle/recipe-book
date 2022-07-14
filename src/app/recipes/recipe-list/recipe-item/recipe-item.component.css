@@ -1,0 +1,9 @@
+.clearfix{
+    background-color: rgb(246, 210, 3);
+    color: white;
+}
+.inner{
+    background-color: rgb(255, 255, 255);
+    color: black;
+    border-radius: 4px;
+}
