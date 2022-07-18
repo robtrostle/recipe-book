@@ -1,3 +1,13 @@
-.navbar{
+.navbar-collapse{
     width: auto;
+    color:#BB2B1B;
+    background-color: #FFDB58;
+}
+
+.nav{
+    color: #BB2B1B;
+}
+
+a{
+    color: #BB2B1B;
 }

@@ -1,9 +1,18 @@
 .clearfix{
-    background-color: rgb(246, 210, 3);
-    color: white;
+    background-color: #FFDB58;
+    color: #BB2B1B;
 }
 .inner{
     background-color: rgb(255, 255, 255);
     color: black;
     border-radius: 4px;
+}
+
+img{
+    max-width: 50px;
+    min-width: 50px;
+}
+
+h4{
+   color: #BB2B1B;
 }

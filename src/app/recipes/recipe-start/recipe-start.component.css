@@ -1,0 +1,14 @@
+.row{
+    position: relative;
+}
+
+.col-xs-10{
+    position: absolute; top: 0;
+}
+
+h3{
+    color: #FFDB58;
+    text-anchor: top;
+    vertical-align: top;
+}
+
