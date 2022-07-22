@@ -33,9 +33,9 @@
                 minlength="6">
             </div>
             <div>
-            <button class="btn btn-primary" type="submit" [disabled]="!authForm.valid">{{isLoginMode ? 'Login' : 'Sign Up'}}</button>
+            <button class="btn-24" type="submit" [disabled]="!authForm.valid">{{isLoginMode ? 'Login' : 'Sign Up'}}</button>
              |
-            <button class="btn btn-success" 
+            <button class="btn-25" 
             (click)="onSwitchMode()" type="button">
             {{ isLoginMode ? 'Sign Up' : 'Login'}}
             </button>
