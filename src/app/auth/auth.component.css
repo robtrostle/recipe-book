@@ -43,7 +43,8 @@ label{
   display: none;
 }
 .btn-24 {
-  --background: rgb(10, 55, 255);
+  --background: rgb(10, 83, 255);
+  text-shadow: 1px 1px black;
   background: none;
   overflow: hidden;
   padding: 0.8rem 3rem;
@@ -110,6 +111,7 @@ label{
   border: 0 solid;
   box-sizing: border-box;
   border-radius: 4px;
+  text-shadow: 1px 1px black;
 }
 .btn-25 {
   -webkit-tap-highlight-color: transparent;
