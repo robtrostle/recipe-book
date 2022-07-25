@@ -32,13 +32,15 @@
                 required
                 minlength="6">
             </div>
-            <div>
-            <button class="btn-24" type="submit" [disabled]="!authForm.valid">{{isLoginMode ? 'Login' : 'Sign Up'}}</button>
-             |
-            <button class="btn-25" 
+
+            <div class="row">
+                <div class="col-xs-12">
+            <button class="btn-70" type="submit" [disabled]="!authForm.valid">{{isLoginMode ? 'Login' : 'Sign Up'}}</button>
+            <button class="btn-68" 
             (click)="onSwitchMode()" type="button">
             {{ isLoginMode ? 'Sign Up' : 'Login'}}
             </button>
+            </div>
             </div>
         </form>
     </div>
