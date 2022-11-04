@@ -1,15 +1,19 @@
 .navbar-collapse{
     width: auto;
-    color:#BB2B1B;
-    background-color: #FFDB58;
+    color:#210054;
+    background-color: lightgray;
+}
+
+.navbar-header{
+  background-color: lightgray;
 }
 
 .nav{
-    color: #BB2B1B;
+    color: #210054;
 }
 
 a{
-    color: #BB2B1B;
+    color: #210054;
 }
 
 

@@ -35,6 +35,7 @@ export class RecipeEditComponent implements OnInit {
       this.recipeService.updateRecipe(this.id, this.recipeForm.value)
     } else {
       this.recipeService.addRecipe(this.recipeForm.value);
+      this.dataStorageService.storeRecipes();
     }
     this.onCancel();
   }
@@ -98,7 +99,7 @@ export class RecipeEditComponent implements OnInit {
   }
 
   onSaveRecipe(){
-    this.dataStorageService.storeRecipes();
+    this.onSubmit();
   }
 
 }
