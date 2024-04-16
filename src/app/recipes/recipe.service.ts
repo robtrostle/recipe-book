@@ -9,25 +9,9 @@ import { Recipe } from './recipe.model';
   providedIn: 'root'
 })
 export class RecipeService {
+  
   recipesChanged = new Subject<Recipe[]>();
  
-
-  // recipes: Recipe[] = [
-  //   new Recipe('Tasty Schnitzel', 
-  //   'Delish', 
-  //   'https://1r6s7piqcip1uwgh2vlwrt15-wpengine.netdna-ssl.com/wp-content/uploads/2020/06/TNWC-Article-Cover-Image.jpg',
-  //   [
-  //     new Ingredient('Pork Chop', 1),
-  //     new Ingredient('Lettuce', 20)
-  //   ]),
-  //   new Recipe('Big Fat Burger', 
-  //   'So delectible', 
-  //   'https://static.onecms.io/wp-content/uploads/sites/9/2018/02/fatburger-impossible-burger-ft-blog0218.jpg',
-  //   [
-  //     new Ingredient('Meat', 1),
-  //     new Ingredient('French Fries', 20)
-  //   ])
-  // ];
   
   private recipes: Recipe[] = [];
 

@@ -40,6 +40,19 @@
             (click)="onSwitchMode()" type="button">
             {{ isLoginMode ? 'Sign Up' : 'Login'}}
             </button>
+
+            <hr>
+            <div *ngIf="!currentGuestUser">
+            <button class="btn btn-primary" type="submit" (click)="signInAsGuest()">Sign in as Guest</button>
+            </div>
+            
+            <div *ngIf="currentGuestUser">
+            <p>Welcome, {{ currentGuestUser.username }}!</p>
+            <button class="btn btn-secondary" type="submit" (click)="signOut()">Sign out</button>
+            <!-- Add other features accessible to guests -->
+            </div>
+
+
             </div>
             </div>
         </form>

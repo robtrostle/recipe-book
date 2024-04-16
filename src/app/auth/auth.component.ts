@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthResponseData, AuthService } from './auth.service';
+import { GuestUserService } from './guest-service.service';
+import { GuestUser } from './guest-user.model';
 
 @Component({
   selector: 'app-auth',
@@ -11,7 +13,8 @@ import { AuthResponseData, AuthService } from './auth.service';
 })
 export class AuthComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router,
+    private guestUserService: GuestUserService) { }
 
   ngOnInit(): void {
   }
@@ -19,12 +22,14 @@ export class AuthComponent implements OnInit {
   isLoginMode = true;
   isLoading = false;
   error: string = null;
+  isGuestMode = this.guestUserService.isGuest;
 
   onSwitchMode(){
     this.isLoginMode = !this.isLoginMode;
   }
 
   onSubmit(form: NgForm){
+
     if(!form.valid){
       return;
     }
@@ -34,6 +39,11 @@ export class AuthComponent implements OnInit {
     let authObs: Observable<AuthResponseData>;
 
     this.isLoading = true;
+
+    if (this.isGuestMode){
+      authObs = this.authService.guestLogin('robtrostle@yahoo.com', 'Hockey#17');
+    }
+    
 
     if(this.isLoginMode){
       authObs = this.authService.login(email, password);
@@ -57,5 +67,26 @@ export class AuthComponent implements OnInit {
 
   onHandleError(){
     this.error = null;
+  }
+
+  signInAsGuest(): void {
+    const guestUser = this.guestUserService.createGuestUser();
+    // Perform any additional actions needed for guest sign-in
+    this.authService.guestLogin('robtrostle@yahoo.com','Hockey#17')
+    //this.onSubmit();
+    this.router.navigate(['/recipes']);
+    
+    console.log('Signed in as guest:', guestUser);
+  }
+
+  signOut(): void {
+    this.guestUserService.clearGuestUser();
+    // Perform any additional actions needed for sign-out
+    this.router.navigate(['/auth']);
+    console.log('Signed out');
+  }
+
+  get currentGuestUser(): GuestUser | null {
+    return this.guestUserService.getGuestUser();
   }
 }
