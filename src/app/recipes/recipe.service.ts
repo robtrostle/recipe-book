@@ -26,8 +26,11 @@ export class RecipeService {
     return this.recipes.slice();
   }
 
-  getRecipe(index: number){
-    return this.recipes[index];
+  getRecipe(index: number) {
+    return {
+      ...this.recipes[index],
+      description: this.recipes[index].description.replace(/(\d+\.\s|•\s)/g, '<br><br><strong>$&</strong>')
+    };
   }
 
   addIngredientsToShoppingList(ingredients: Ingredient[]){

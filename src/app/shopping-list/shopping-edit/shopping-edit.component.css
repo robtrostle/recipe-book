@@ -1,3 +1,12 @@
 label{
     color: #FFDB58;
 }
+
+.button-group button {
+    margin-right: 10px; /* Adds space to the right of each button */
+  }
+  
+  .button-group button:last-child {
+    margin-right: 0; /* Ensures no extra margin on the last button */
+  }
+  

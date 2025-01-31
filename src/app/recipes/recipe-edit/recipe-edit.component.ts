@@ -43,11 +43,7 @@ export class RecipeEditComponent implements OnInit {
   onAddIngredient(){
     (<UntypedFormArray>this.recipeForm.get('ingredients')).push(
       new UntypedFormGroup({
-        'name': new UntypedFormControl(null, Validators.required),
-        'amount': new UntypedFormControl(null, [
-          Validators.required, 
-          Validators.pattern(/^[1-9]+[0-9]*$/)
-        ])
+        'name': new UntypedFormControl(null, Validators.required)
       })
     );
   }
@@ -76,11 +72,7 @@ export class RecipeEditComponent implements OnInit {
         for (let ingredient of recipe.ingredients){
           recipeIngredients.push(
             new UntypedFormGroup({
-              'name': new UntypedFormControl(ingredient.name, Validators.required),
-              'amount': new UntypedFormControl(ingredient.amount, [
-                Validators.required, 
-                Validators.pattern(/^[1-9]+[0-9]*$/)
-              ])
+              'name': new UntypedFormControl(ingredient.name, Validators.required)
             })
           )
         }
