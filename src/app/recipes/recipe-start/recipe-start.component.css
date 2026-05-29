@@ -1,14 +1,3 @@
-.row{
-    position: relative;
+h3 {
+  color: #070142;
 }
-
-.col-xs-10{
-    position: absolute; top: 0;
-}
-
-h3{
-    color: #FFDB58;
-    text-anchor: top;
-    vertical-align: top;
-}
-

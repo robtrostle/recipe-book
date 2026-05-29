@@ -1,5 +1,24 @@
-label{
-    color: #FFDB58;
+:host {
+  display: block;
+  min-height: calc(100vh - 120px);
+  margin: -8px 0 24px;
+  padding: 48px 0;
+  border-radius: var(--radius);
+  background:
+    linear-gradient(rgba(15, 23, 42, .45), rgba(15, 23, 42, .45)),
+    url('../../assets/auth-bg.jpg')
+    center / cover no-repeat;
+}
+
+:host form {
+  background: rgba(255, 255, 255, .96);
+  padding: 28px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+}
+
+label {
+  color: var(--text);
 }
 .btn-70,
 .btn-70 *,
@@ -254,6 +273,3 @@ label{
     width: 100%;
   }
 }
-
-
-

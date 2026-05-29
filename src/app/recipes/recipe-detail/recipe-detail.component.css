@@ -1,13 +1,19 @@
-.col-xs-12{
-    background-color: lightgray;
-    border-radius: 4px;
+:host { display: block; }
+
+#top { margin-top: 16px; }
+
+.img-responsive {
+  width: 100%;
+  max-height: 340px;
+  object-fit: cover;
+  border-radius: var(--radius);
 }
 
-h1{
-    color: #210054;
-    text-align: center;
+h1 {
+  text-align: left;
+  margin: 18px 0 8px;
+  font-size: 1.8rem;
+  color: #210054;
 }
 
-#top{
-    margin-top: 10px;
-}
+.btn-group { margin: 8px 0 16px; }

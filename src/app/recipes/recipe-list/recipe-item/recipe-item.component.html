@@ -1,18 +1,11 @@
-<div class="card">
-    <a      style="cursor: pointer"
-        [routerLink]="[index]"
-        routerLinkActive="active"
-        class="list-group-item clearfix">
-            <div class="pull-left">
-                <h4 class = "list-group-item-heading" style="color: #210054; font-weight: bold;text-shadow: 2px black;">{{recipe.name}}</h4>
-                <!-- <p class="list-group-item inner">{{recipe.description.length > 40 ? recipe.description.substring(0, 40) + '...' : recipe.description}}</p> -->
-            </div>
-            <span class="pull-right">
-                <img 
-                [src]="recipe.imagePath"
-                alt="{{recipe.name}}" 
-                class="img-responsive" 
-                style="max-height: 50px; max-width: 50px;">
-            </span>
-    </a>
-</div>
+<a class="recipe-card"
+    [routerLink]="[index]"
+    routerLinkActive="active">
+    <img class="recipe-card__img"
+        [src]="recipe.imagePath"
+        alt="{{ recipe.name }}">
+    <div class="recipe-card__body">
+        <h4 class="recipe-card__title">{{ recipe.name }}</h4>
+        <p class="recipe-card__desc">{{ recipe.description }}</p>
+    </div>
+</a>
