@@ -22,7 +22,7 @@
                <li class="dropdown" appDropdown  *ngIf="isAuthenticated">
                    <a style="cursor: pointer;" class="dropdown-toggle" role="button" style="color: #BB2B1B;">Manage<span class="caret"></span></a>
                    <ul class="dropdown-menu">
-                       <li><a style="cursor: pointer;" (click)="onSaveData()">Save Data</a></li>
+                       <li *ngIf="!isGuest"><a style="cursor: pointer;" (click)="onSaveData()">Save Data</a></li>
                        <li><a style="cursor: pointer;" (click)="onFetchData()">Fetch Data</a></li>
                    </ul>
                </li> 

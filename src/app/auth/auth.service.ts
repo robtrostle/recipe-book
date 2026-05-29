@@ -5,6 +5,7 @@ import { BehaviorSubject, throwError } from 'rxjs';
 import { User } from './user.model';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
+import { GuestUserService } from './guest-service.service';
 
 export interface AuthResponseData {
   kind: string;
@@ -24,7 +25,8 @@ export class AuthService {
   user = new BehaviorSubject<User>(null);//starting value
   autoLogoutTimer: any;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router,
+    private guestUserService: GuestUserService) { }
 
   signup(email: string, password: string) {
     return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' + environment.apiKey, 
@@ -96,6 +98,7 @@ export class AuthService {
 
   logout() {
     this.user.next(null);
+    this.guestUserService.clearGuestUser();
     this.router.navigate(['/auth']);
     localStorage.removeItem('userData');
     if (this.autoLogoutTimer) {

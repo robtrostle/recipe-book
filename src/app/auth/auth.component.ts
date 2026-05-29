@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { AuthResponseData, AuthService } from './auth.service';
 import { GuestUserService } from './guest-service.service';
 import { GuestUser } from './guest-user.model';
+import { DataStorageService } from '../shared/data-storage.service';
 
 @Component({
   selector: 'app-auth',
@@ -14,7 +15,8 @@ import { GuestUser } from './guest-user.model';
 export class AuthComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router,
-    private guestUserService: GuestUserService) { }
+    private guestUserService: GuestUserService,
+    private dataStorageService: DataStorageService) { }
 
   ngOnInit(): void {
   }
@@ -70,13 +72,21 @@ export class AuthComponent implements OnInit {
   }
 
   signInAsGuest(): void {
-    const guestUser = this.guestUserService.createGuestUser();
-    // Perform any additional actions needed for guest sign-in
-    this.authService.guestLogin('robtrostle@yahoo.com','Hockey#17')
-    //this.onSubmit();
-    this.router.navigate(['/recipes']);
-    
-    console.log('Signed in as guest:', guestUser);
+    this.guestUserService.createGuestUser();
+    this.isLoading = true;
+    this.authService.guestLogin('robtrostle@yahoo.com', 'Hockey#17').subscribe(
+      () => {
+        this.dataStorageService.fetchRecipes().subscribe(() => {
+          this.isLoading = false;
+          this.router.navigate(['/recipes']);
+        });
+      },
+      errorMessage => {
+        this.error = errorMessage;
+        this.isLoading = false;
+        this.guestUserService.clearGuestUser();
+      }
+    );
   }
 
   signOut(): void {

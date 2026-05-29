@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Subscription } from "rxjs";
 import { AuthService } from "../auth/auth.service";
 import { DataStorageService } from "../shared/data-storage.service";
+import { GuestUserService } from "../auth/guest-service.service";
 
 
 @Component({
@@ -12,7 +13,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
     isAuthenticated = false;
     private userSub: Subscription;
     collapsed = true;
-    constructor(private dataStorageService: DataStorageService, private authService: AuthService){}
+    constructor(private dataStorageService: DataStorageService, private authService: AuthService,
+        private guestUserService: GuestUserService){}
+
+    get isGuest(): boolean {
+        return this.guestUserService.isGuest;
+    }
 
     ngOnInit(){
         this.userSub = this.authService.user.subscribe(user => {

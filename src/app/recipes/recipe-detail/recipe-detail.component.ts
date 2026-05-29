@@ -3,6 +3,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
 import { DataStorageService } from '../../shared/data-storage.service';
+import { GuestUserService } from '../../auth/guest-service.service';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -14,7 +15,12 @@ export class RecipeDetailComponent implements OnInit {
   id: number;
   constructor(private recipeService: RecipeService, private dataStorageService: DataStorageService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private guestUserService: GuestUserService) { }
+
+  get isGuest(): boolean {
+    return this.guestUserService.isGuest;
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
